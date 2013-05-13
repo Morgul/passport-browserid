@@ -9,8 +9,8 @@ docs: docs/api.html
 
 docs/api.html: lib/passport-browserid/*.js
 	dox \
-		--title Passport-BrowserID \
-		--desc "BrowserID authentication strategy for Passport" \
+		--title Passport-Persona \
+		--desc "Persona authentication strategy for Passport" \
 		$(shell find lib/passport-browserid/* -type f) > $@
 
 docclean:

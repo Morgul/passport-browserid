@@ -1,10 +1,25 @@
-# Passport-BrowserID
+# Passport-Persona
+
+-----
+
+## This is a fork
+
+I've forked the [original](https://github.com/jaredhanson/passport-browserid)
+because I needed Persona support for passport, and several changes needed to be
+made now that Persona has been officially launched. There's a good discussion 
+[here](https://github.com/jaredhanson/passport-browserid/issues/4) about why the original author hasn't merged these changes in, and I 
+honestly completely understand his dilema. As I'm not picky, and really just need
+Persona support, I took it upon myself to rename everything, and get it all 
+working again. Any changes I make here that are not cosmetic (ex: "browserid" 
+vs "persona"), I will make sure make their way into the original.
+
+-----
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with [BrowserID](https://login.persona.org/).
+with [Persona](https://login.persona.org/).
 
-This module lets you authenticate using BrowserID in your Node.js applications.
-By plugging into Passport, BrowserID authentication can be easily and
+This module lets you authenticate using Persona in your Node.js applications.
+By plugging into Passport, Persona authentication can be easily and
 unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
@@ -17,12 +32,12 @@ unobtrusively integrated into any application or framework that supports
 
 #### Configure Strategy
 
-The BrowserID authentication strategy authenticates users using an assertion of
-email address ownership, obtained via the BrowserID JavaScript API.  The
+The Persona authentication strategy authenticates users using an assertion of
+email address ownership, obtained via the Persona JavaScript API.  The
 strategy requires a `validate` callback, which accepts an email address and calls
 `done` providing a user.
 
-    passport.use(new BrowserIDStrategy({
+    passport.use(new PersonaStrategy({
         audience: 'http://www.example.com'
       },
       function(email, done) {
@@ -69,6 +84,8 @@ For a complete, working example, refer to the [signin example](https://github.co
 ## Credits
 
   - [Jared Hanson](http://github.com/jaredhanson)
+  - [Leo McArdle](https://github.com/LeoMcA)
+  - [Leo McArdle](https://github.com/LeoMcA)
   - [Leo McArdle](https://github.com/LeoMcA)
 
 ## License

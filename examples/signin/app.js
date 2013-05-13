@@ -1,7 +1,7 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
-  , BrowserIDStrategy = require('passport-browserid').Strategy;
+  , PersonaStrategy = require('passport-browserid').Strategy;
 
 
 // Passport session setup.
@@ -9,7 +9,7 @@ var express = require('express')
 //   serialize users into and deserialize users out of the session.  Typically,
 //   this will be as simple as storing the user ID when serializing, and finding
 //   the user by ID when deserializing.  However, since this example does not
-//   have a database of user records, the BrowserID verified email address
+//   have a database of user records, the Persona verified email address
 //   is serialized and deserialized.
 passport.serializeUser(function(user, done) {
   done(null, user.email);
@@ -20,17 +20,17 @@ passport.deserializeUser(function(email, done) {
 });
 
 
-// Use the BrowserIDStrategy within Passport.
+// Use the PersonaStrategy within Passport.
 //   Strategies in passport require a `validate` function, which accept
-//   credentials (in this case, a BrowserID verified email address), and invoke
+//   credentials (in this case, a Persona verified email address), and invoke
 //   a callback with a user object.
-passport.use(new BrowserIDStrategy({
+passport.use(new PersonaStrategy({
     audience: 'http://127.0.0.1:3000'
   },
   function(email, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      
+
       // To keep the example simple, the user's email address is returned to
       // represent the logged-in user.  In a typical application, you would want
       // to associate the email address with a user record in your database, and
@@ -77,9 +77,9 @@ app.get('/login', function(req, res){
 
 // POST /auth/browserid
 //   Use passport.authenticate() as route middleware to authenticate the
-//   request.  BrowserID authentication will verify the assertion obtained from
+//   request.  Persona authentication will verify the assertion obtained from
 //   the browser via the JavaScript API.
-app.post('/auth/browserid', 
+app.post('/auth/browserid',
   passport.authenticate('browserid', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
